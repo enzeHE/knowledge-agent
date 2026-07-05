@@ -1,0 +1,25 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+
+# IDE
+.idea/
+.vscode/
+
+# Claude
+.claude/
+
+# Data (downloaded docs, uploads, temp files — too large for git)
+data/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,48 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+python-dotenv==1.0.1
+pydantic-settings==2.4.0
+
+# LLM & Agent
+langchain==0.3.7
+langchain-anthropic==0.3.0
+langgraph==0.2.50
+langchain-community==0.3.7
+
+# Embedding（本地）
+sentence-transformers==3.2.1
+torch==2.4.1
+
+# RAG & 向量库
+qdrant-client==1.11.3
+rank-bm25==0.2.2
+
+# 数据库
+sqlalchemy<2.0.36,>=1.4
+aiomysql==0.2.0
+alembic==1.13.3
+redis==5.1.1
+
+# 异步任务
+celery==5.4.0
+
+# Token 计数
+tiktoken==0.7.0
+
+# 文档解析
+unstructured==0.15.13
+python-docx==1.1.2
+pypdf==5.1.0
+
+# 前端
+gradio==5.6.0
+
+# 中文分词
+jieba==0.42.1
+
+# 评估
+ragas==0.2.6
+
+# 认证
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
