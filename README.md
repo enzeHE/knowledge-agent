@@ -2,7 +2,7 @@
 
 基于 **LangGraph + FastAPI + RAG** 的个人全栈知识助手，支持 FastAPI / LangChain / LangGraph 技术文档智能问答。
 
-> 求职方向：Agent 开发 / Agent 应用
+
 
 ## 架构图
 
