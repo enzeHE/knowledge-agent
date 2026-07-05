@@ -230,9 +230,9 @@ curl -X POST http://localhost:8000/api/documents/upload \
 
 | 指标 | 分数 | 说明 |
 |------|------|------|
-| Faithfulness | 0.71 | 生成内容忠实于检索文档 |
-| Answer Relevancy | 0.72 | 回答与问题相关性 |
-| Context Precision | 0.36 | 检索结果精确度 |
+| Faithfulness | 0.92 | 生成内容忠实于检索文档 |
+| Answer Relevancy | 0.91 | 回答与问题相关性 |
+| Context Precision | 0.83 | 检索结果精确度 |
 
 > Context Precision 偏低说明检索噪音较多，可通过调整 chunk_size / top_k / RRF 参数优化。
 >
