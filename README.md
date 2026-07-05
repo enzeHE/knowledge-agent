@@ -238,24 +238,3 @@ curl -X POST http://localhost:8000/api/documents/upload \
 >
 > 基于 cl100k_base tokenizer 的分块策略（chunk_size=512, overlap=50）已针对 Markdown 层级结构优化。
 
-## 面试亮点
-
-- **混合检索 Pipeline**: BM25（关键词精确匹配）+ 向量检索（语义理解）+ RRF 融合 → Query Rewrite 查询分解 → Cross-Encoder 重排序，多层过滤提升检索精度
-- **LangGraph 状态机**: 7 节点 DAG，包含输入安全守卫、意图路由（retrieve/clarify/general）、检索、生成、输出过滤、滑动窗口摘要管理
-- **查询重写**: LLM 自动将模糊/过短的查询拆解为 2-3 个具体子查询，多路检索后跨查询 RRF 融合
-- **安全防护**: 输入层（空查询/过长/敏感词 AC 自动机匹配）+ 输出层（技术实体提取 + 来源验证）
-- **滑动窗口记忆**: 基于 cl100k_base 的 token 精确计数，触发 4K 阈值后自动压缩历史会话为摘要，兼顾长上下文和 token 成本
-- **SSE 流式 + 节点状态**: 前端实时感知 Agent 推理阶段（守卫→路由→检索→生成→上下文管理）
-- **异步架构**: 全异步 SSE 流式输出 + Celery 后台文档入库，不阻塞请求
-- **评估驱动**: RAGAS 评估框架（60条测试集）量化检索和生成质量
-
-## 常见问题
-
-**Q: Agent 不调用 search_docs 怎么办？**
-A: 确保新会话时 SystemMessage 正确传入。已实现 checkpoint 分支处理：新会话传完整 system prompt，已有会话只传新消息。
-
-**Q: Windows 下 SSE API segfault？**
-A: 这是 torch + aiomysql C 扩展冲突。已在 chat handler 中预加载 embedding 模型解决。
-
-**Q: 如何更换 Embedding 模型？**
-A: 修改 `.env` 中的 `EMBEDDING_MODEL`，然后重建 Qdrant collection。
